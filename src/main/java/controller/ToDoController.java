@@ -2,6 +2,7 @@ package controller;
 
 import entity.Status;
 import entity.Todo;
+import repository.TodoRepository;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -9,17 +10,18 @@ import java.util.Scanner;
 
 public class ToDoController {
     Scanner scanner = new Scanner(System.in);
+    TodoRepository todoRepository = new TodoRepository();
 
     public ToDoController() {
     }
 
     public void addTodo() {
-
         try {
         Todo todo = this.collectTodoInfo();
-            System.out.println(todo);
+        todoRepository.addTodoToDB(todo);
+            System.out.println("Todo item was add successfully");
         }catch (Exception exception) {
-            System.out.println("Error occurred while creating todo" + exception.getMessage());
+            System.out.println("Error: " + exception.getClass() + " - " + exception.getMessage());
             //show msg about error
         }
 

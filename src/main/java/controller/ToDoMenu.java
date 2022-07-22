@@ -34,6 +34,9 @@ public class ToDoMenu {
                 System.exit(0);
         }
 
+        System.out.println();
+        start();
+
     }
     private void showOptions() {
         System.out.println(

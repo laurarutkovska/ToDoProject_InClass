@@ -7,10 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class TodoRepository {
-    Connection connection = DatabaseManager.getConnection();
-
+    Connection connection = new DatabaseManager().getConnection();
     public void addTodoToDB(Todo todo) throws SQLException {
-
         String query = "INSERT INTO todos (description, dueDate, dueTime, status)" +
                 "VALUES(?,?,?,?)";
         PreparedStatement preparedStatement= connection.prepareStatement(query);
